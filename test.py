@@ -1,5 +1,5 @@
 # name = "444B"
-# phrase = "So Long and Thanks for All the Fish"
+phrase = "So Long and Thanks for All the Fish"
 
 # print('Hello ' + name + '!')
 
@@ -17,10 +17,11 @@
 
 
 #TODO Make a for loop that will 
-# print out all indexes of s
-# print(phrase.lower().index('s'))
-# for i in phrase:
-#     print(phrase[i])
+# print out all indexes of phrase
+for letter in phrase:
+    product = []
+    print(letter + str(phrase.index(letter)))
+
 
 
 
@@ -62,14 +63,14 @@
 
 
 # for x in friends:
-#     print(x + '!')
+# #     print(x + '!')
 
-def raise_to_power(base_num, pow_num):
-    result = 1
-    for index in range(pow_num):
-        result = result * base_num
-    return result
+# def raise_to_power(base_num, pow_num):
+#     result = 1
+#     for index in range(pow_num):
+#         result = result * base_num
+#     return result
 
-for index in range(20):
-    print(raise_to_power(2, index))
+# for index in range(20):
+#     print(raise_to_power(2, index))
 
