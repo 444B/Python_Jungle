@@ -16,11 +16,11 @@ phrase = "So Long and Thanks for All the Fish"
 
 
 
-#TODO Make a for loop that will 
-# print out all indexes of phrase
-for letter in phrase:
-    product = []
-    print(letter + str(phrase.index(letter)))
+# #TODO Make a for loop that will 
+# # print out all indexes of phrase
+# for letter in phrase:
+#     product = []
+#     print(letter + str(phrase.index(letter)))
 
 
 
@@ -74,3 +74,7 @@ for letter in phrase:
 # for index in range(20):
 #     print(raise_to_power(2, index))
 
+
+
+a = {1,2,3}
+a
