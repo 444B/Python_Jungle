@@ -1,3 +1,9 @@
+# TODO Write comments
+# TODO Rewrite the code into functions
+# TODO write init, name, main thingy
+# TODO Finish writing the Tax section. Definitely need some functions here
+
+
 # ------------------------------------------
 print("\n")
 gross_yearly_salary = int(input("What is your yearly gross salary?"))
@@ -13,6 +19,7 @@ print("This is earned every " +str((working_days/yearly_holidays)/5) + " weeks")
 
 print("\n")
 print("Salary Section")
+# https://www.cpa-dray.com/en/blog/income-tax-rates-in-israel/
 if gross_yearly_salary <=  77400:
     net_yearly_salary = gross_yearly_salary - (gross_yearly_salary/10)
     print("You are in the 10% Tax bracket and are paying "+ str(gross_yearly_salary/10) +" in tax")
