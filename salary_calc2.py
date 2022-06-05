@@ -15,17 +15,16 @@ I have included a comment on each section mentioning if it currently works or no
 def working_days(holidays):
     """ calculates when to take holidays """
     days_of_work = (365 - (58*2) - int(holidays))
-    print("Working Days Section")
-    print("You work " + str(days_of_work) + " days a year")
-    print("You have about " + str(round(holidays/12, 2)) +
-          " holidays every month")
-    print("For every " + str(days_of_work/holidays) +
-          " days worked, you earn a day off")
-    print("This is earned every " +
-          str((days_of_work/holidays)/5) + " weeks")
-    print("You should take a 5 day holiday every " +
-          str(round(holidays/12, 2)) + " weeks")
-    print("\n")
+    print(f"""
+    Working Days Section
+    ===========================
+    You work {str(days_of_work)} days a year,
+    You have about {str(round(holidays/12, 2))} holidays every month,
+    For every {str(days_of_work/holidays)} days worked, you earn a day off,
+    This is earned every {str((days_of_work/holidays)/5)} weeks,
+    You should take a 5 day holiday every {str(round(holidays/12, 2))} weeks!
+
+    """)
     return days_of_work, holidays
 
 
@@ -93,7 +92,7 @@ def calc_net_yearly_salary():
 
 def salary(gross_salary):
     """ calculates pre tax earnings """
-    print(" You earn " + str(gross_salary) + " before tax")
+    print(f" You earn {str(gross_salary)} before tax")
     # print(" You earn " + str(net_yearly_salary) + " after tax")
     # print(" You make " + str(net_yearly_salary / working_days) + " per day")
     # print(" You make " + str(net_yearly_salary / working_days / 8.5) + " per hour")
