@@ -74,10 +74,10 @@ def tax_bracket2(bracket, gross_salary_amount):
             return 0.50
 
 
-def calc_net_yearly_salary(bracket, gross_salary):
+def calc_net_yearly_salary(gross_salary):
     """calculats yearly net salary"""
     # add full logic for how tax brackets actually work (i.e each step is taxed at its own rate)
-    tax_percent = tax_bracket2(bracket, gross_salary)
+    tax_percent = tax_bracket(gross_salary)
     net_salary = gross_salary - (gross_salary * tax_percent)
     return net_salary
 
@@ -103,4 +103,4 @@ if __name__ == "__main__":
     working_days(yearly_holidays)
     tax_bracket(gross_yearly_salary)
     salary(gross_yearly_salary)
-    calc_net_yearly_salary(brackets, gross_yearly_salary)
+    calc_net_yearly_salary(gross_yearly_salary)
