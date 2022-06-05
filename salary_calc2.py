@@ -8,9 +8,6 @@ have been commented out
 I have included a comment on each section mentioning if it currently works or not
 """
 
-# This is a function to calculate working days
-# Works
-
 
 def working_days(holidays):
     """ calculates when to take holidays """
@@ -54,7 +51,7 @@ def tax_bracket(gross_salary):
         print("Tax can not be calculated, please review numbers provided")
 
     print("You are taxed at " + str(tax_bracket * 100) + "%")
-    calc_net_yearly_salary()
+    # calc_net_yearly_salary()
     return tax_bracket
 
 
@@ -70,28 +67,26 @@ brackets = {"0.10": 77400,
 def tax_bracket2(bracket, gross_salary_amount):
     """calucaltes tax brackets"""
     for key, value in bracket.items():
-        if(gross_salary_amount <= value):
+        if gross_salary_amount <= value:
             return key
 
-        if(gross_salary_amount > 663241):
+        if gross_salary_amount > 663241:
             return 0.50
 
 
-def calc_net_yearly_salary():
-    # This is a function to calcuate net salary after tax deductions
-    # work in progress
-    # TODO add logic and find a way to correct export the values since i dont seem to be using "return" correctly
-    # TODO add full logic for how tax brackets actually work (i.e each step is taxed at its own rate)
-    # net_yearly_salary = gross_yearly_salary - (gross_yearly_salary * tax_bracket)
-    # return net_yearly_salary
-    print("Work in progress")
-
-# This is a function to calcuate salary
-# Works but need to fix the importing of net_yearly_salary which is depending on calc_net_yearly_salary()
+def calc_net_yearly_salary(bracket, gross_salary):
+    """calculats yearly net salary"""
+    # add full logic for how tax brackets actually work (i.e each step is taxed at its own rate)
+    tax_percent = tax_bracket2(bracket, gross_salary)
+    net_salary = gross_salary - (gross_salary * tax_percent)
+    return net_salary
 
 
 def salary(gross_salary):
     """ calculates pre tax earnings """
+    # This is a function to calcuate salary
+    # Works but need to fix the importing of net_yearly_salary which,
+    # is depending on calc_net_yearly_salary()
     print(f" You earn {str(gross_salary)} before tax")
     # print(" You earn " + str(net_yearly_salary) + " after tax")
     # print(" You make " + str(net_yearly_salary / working_days) + " per day")
@@ -108,3 +103,4 @@ if __name__ == "__main__":
     working_days(yearly_holidays)
     tax_bracket(gross_yearly_salary)
     salary(gross_yearly_salary)
+    calc_net_yearly_salary(brackets, gross_yearly_salary)
