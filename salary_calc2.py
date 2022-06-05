@@ -1,5 +1,5 @@
 """
-This script is meant to take in yearly holidays and gross salary and calculate 
+This script is meant to take in yearly holidays and gross salary and calculate
 the net yearly salary, stats about holidays and income and other things.
 Run the script bug it is currently in debug mode as I fugure out tax brackets
 
@@ -98,12 +98,18 @@ def salary(gross_salary, holidays):
     """)
 
 
-if __name__ == "__main__":
+def main():
+    """main function"""
     gross_yearly_salary = int(
         input("What is your yearly gross salary?: ").strip())
+
     yearly_holidays = int(
         input("How many holidays do you get a year?: ").strip())
 
     tax_bracket2(brackets, gross_yearly_salary)
 
     salary(gross_yearly_salary, yearly_holidays)
+
+
+if __name__ == "__main__":
+    main()
