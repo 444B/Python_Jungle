@@ -47,8 +47,6 @@ def tax_bracket(gross_salary):
         return 0.47
     elif gross_salary > 663241:
         return 0.50
-    else:
-        print("Tax can not be calculated, please review numbers provided")
 
     print("You are taxed at " + str(tax_bracket * 100) + "%")
     # calc_net_yearly_salary()
