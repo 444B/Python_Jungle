@@ -11,7 +11,7 @@ I have included a comment on each section mentioning if it currently works or no
 
 def working_days(holidays):
     """ calculates when to take holidays """
-    days_of_work = (365 - (58*2) - int(holidays))
+    days_of_work = (249 - int(holidays))
     print(f"""
     Working Days Section
     ===========================
@@ -22,7 +22,7 @@ def working_days(holidays):
     You should take a 5 day holiday every {str(round(holidays/12, 2))} weeks!
 
     """)
-    return days_of_work, holidays
+    return days_of_work
 
 
 # This is a function to calcuate tax brackets
@@ -80,17 +80,24 @@ def calc_net_yearly_salary(gross_salary):
     return net_salary
 
 
-def salary(gross_salary):
-    """ calculates pre tax earnings """
-    # This is a function to calcuate salary
+def salary(gross_salary, holidays):
+    """ calculates salary earnings """
     # Works but need to fix the importing of net_yearly_salary which,
     # is depending on calc_net_yearly_salary()
-    print(f" You earn {str(gross_salary)} before tax")
-    # print(" You earn " + str(net_yearly_salary) + " after tax")
-    # print(" You make " + str(net_yearly_salary / working_days) + " per day")
-    # print(" You make " + str(net_yearly_salary / working_days / 8.5) + " per hour")
-    # print(" You make " + str(net_yearly_salary / working_days / 8.5 / 60) + " per minute")
-    # print(" You make " + str(net_yearly_salary / working_days / 8.5 / 60 / 60) + " per second")
+    net_salary = calc_net_yearly_salary(gross_salary)
+    work_days = working_days(holidays)
+
+    print(f"""
+    Your Earnings
+    =====================================
+    You earn {str(gross_salary)} before tax,
+    You earn {str(net_salary)} after tax"
+    Which is, {str(net_salary / work_days)} per day,
+    {str(net_salary / work_days / 8.5)} per hour,
+    {str(net_salary / work_days / 8.5 / 60)} per minute,
+    {str(net_salary / work_days / 8.5 / 60 / 60)} per second
+
+    """)
 
 
 if __name__ == "__main__":
@@ -98,7 +105,6 @@ if __name__ == "__main__":
     yearly_holidays = int(input("How many holidays do you get a year?: "))
 
     tax_bracket2(brackets, gross_yearly_salary)
-    working_days(yearly_holidays)
+
     tax_bracket(gross_yearly_salary)
-    salary(gross_yearly_salary)
-    calc_net_yearly_salary(gross_yearly_salary)
+    salary(gross_yearly_salary, yearly_holidays)
