@@ -1,7 +1,15 @@
-# TODO Finish writing the Tax section. Definitely need some functions here
+""" 
+This script is meant to take in yearly holidays and gross salary and calculate 
+the net yearly salary, stats about holidays and income and other things.
+Run the script bug it is currently in debug mode as I fugure out tax brackets
 
+The script does run as is but it is not finished. Problematic sections in debug mode
+have been commented out
+I have included a comment on each section mentioning if it currently works or not
+"""
 
-# This is a function to calcuate working days
+# This is a function to calculate working days
+# Works
 def working_days():
     working_days = (365 - (58*2) - int(yearly_holidays))
     print("Working Days Section")
@@ -15,7 +23,8 @@ def working_days():
 
 
 # This is a function to calcuate tax brackets
-def tax_rate():
+# Works but doesnt seem to export the values to global variables
+def tax_bracket():
     if gross_yearly_salary <=  77400:
         tax_bracket = 0.10
     elif gross_yearly_salary <=  110880:
@@ -35,15 +44,21 @@ def tax_rate():
 
     print("You are taxed at " + str(tax_bracket * 100) + "%")
     calc_net_yearly_salary()
-   
+    return tax_bracket
+# This is a function to calcuate net salary after tax deductions
+# work in progress
 def calc_net_yearly_salary():
+    # TODO add logic and find a way to correct export the values since i dont seem to be using "return" correctly
+    # TODO add full logic for how tax brackets actually work (i.e each step is taxed at its own rate)
     # net_yearly_salary = gross_yearly_salary - (gross_yearly_salary * tax_bracket)
-    print("line")
+    # return net_yearly_salary
+    print("Work in progress")
 
 # This is a function to calcuate salary
+# Works but need to fix the importing of net_yearly_salary which is depending on calc_net_yearly_salary()
 def salary():
     print(" You earn " + str(gross_yearly_salary) + " before tax")
-    print(" You earn " + str(net_yearly_salary) + " after tax")
+    # print(" You earn " + str(net_yearly_salary) + " after tax")
     # print(" You make " + str(net_yearly_salary / working_days) + " per day")
     # print(" You make " + str(net_yearly_salary / working_days / 8.5) + " per hour")
     # print(" You make " + str(net_yearly_salary / working_days / 8.5 / 60) + " per minute")
@@ -54,6 +69,6 @@ if __name__ == "__main__":
     yearly_holidays  = int(input("How many holidays do you get a year?: "))
 
     working_days()
-    tax_rate()
+    tax_bracket()
     salary()
     print()
