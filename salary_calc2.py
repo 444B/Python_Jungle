@@ -89,20 +89,22 @@ def salary(gross_salary, holidays):
 
     print(f"""
     Your Earnings
-    =====================================
+    ===========================
     You earn {str(gross_salary)} before tax,
     You earn {str(net_salary)} after tax"
     Which is, {str(net_salary / work_days)} per day,
-    {str(net_salary / work_days / 8.5)} per hour,
-    {str(net_salary / work_days / 8.5 / 60)} per minute,
-    {str(net_salary / work_days / 8.5 / 60 / 60)} per second
+    {str(round(net_salary / work_days / 8.5))} per hour,
+    {str(round(net_salary / work_days / 8.5 / 60, 3))} per minute,
+    {str(round(net_salary / work_days / 8.5 / 60 / 60, 2))} per second
 
     """)
 
 
 if __name__ == "__main__":
-    gross_yearly_salary = int(input("What is your yearly gross salary?"))
-    yearly_holidays = int(input("How many holidays do you get a year?: "))
+    gross_yearly_salary = int(
+        input("What is your yearly gross salary?: ").strip())
+    yearly_holidays = int(
+        input("How many holidays do you get a year?: ").strip())
 
     tax_bracket2(brackets, gross_yearly_salary)
 
