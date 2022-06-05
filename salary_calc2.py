@@ -48,8 +48,6 @@ def tax_bracket(gross_salary):
     elif gross_salary > 663241:
         return 0.50
 
-    print("You are taxed at " + str(tax_bracket * 100) + "%")
-    # calc_net_yearly_salary()
     return tax_bracket
 
 
@@ -108,5 +106,4 @@ if __name__ == "__main__":
 
     tax_bracket2(brackets, gross_yearly_salary)
 
-    tax_bracket(gross_yearly_salary)
     salary(gross_yearly_salary, yearly_holidays)
