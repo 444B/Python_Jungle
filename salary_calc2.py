@@ -69,13 +69,15 @@ brackets = {"0.10": 77400,
 
 
 def tax_bracket2(bracket, gross_salary_amount):
+    """calucaltes tax brackets"""
     for key, value in bracket.items():
         if(gross_salary_amount <= value):
             return key
-        elif(gross_salary_amount > 663241):
+
+        if(gross_salary_amount > 663241):
             return 0.50
         else:
-            print("Tax can not be calculated, please review numbers provided")
+            return "Tax can not be calculated, please review numbers provided"
 
 
 def calc_net_yearly_salary():
