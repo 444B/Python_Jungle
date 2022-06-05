@@ -76,8 +76,6 @@ def tax_bracket2(bracket, gross_salary_amount):
 
         if(gross_salary_amount > 663241):
             return 0.50
-        else:
-            return "Tax can not be calculated, please review numbers provided"
 
 
 def calc_net_yearly_salary():
