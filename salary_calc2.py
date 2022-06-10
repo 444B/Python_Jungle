@@ -9,9 +9,9 @@ I have included a comment on each section mentioning if it currently works or no
 """
 
 
-def working_days(holidays):
-    """ calculates when to take holidays """
-    days_of_work = (249 - int(holidays))
+def working_days(holidays: int):
+    """calculates when to take holidays"""
+    days_of_work = (249 - holidays)
     print(f"""
     Working Days Section
     ===========================
@@ -25,7 +25,7 @@ def working_days(holidays):
     return days_of_work
 
 
-def tax_bracket(gross_salary):
+def tax_bracket(gross_salary: int):
     """calculates tax bracket"""
     if gross_salary <= 77400:
         return 0.10
@@ -54,7 +54,7 @@ brackets = {
 }
 
 
-def tax_bracket2(bracket, gross_salary_amount):
+def tax_bracket2(bracket: dict[float, int], gross_salary_amount: int):
     """calucaltes tax brackets"""
     for key, value in bracket.items():
         if gross_salary_amount > 663241:
@@ -64,7 +64,7 @@ def tax_bracket2(bracket, gross_salary_amount):
             return key
 
 
-def calc_net_yearly_salary(gross_salary):
+def calc_net_yearly_salary(gross_salary: int):
     """calculats yearly net salary"""
     # add full logic for how tax brackets actually work (i.e each step is taxed at its own rate)
     tax_percent = tax_bracket(gross_salary)
@@ -72,7 +72,7 @@ def calc_net_yearly_salary(gross_salary):
     return net_salary
 
 
-def salary(gross_salary, holidays):
+def salary(gross_salary: int, holidays: int):
     """ calculates salary earnings """
     net_salary = calc_net_yearly_salary(gross_salary)
     work_days = working_days(holidays)
@@ -90,7 +90,7 @@ def salary(gross_salary, holidays):
     """)
 
 
-def user_input_checker(input_question):
+def user_input_checker(input_question: str):
     """Gets and checks user inputs"""
     while True:
         try:
@@ -99,7 +99,7 @@ def user_input_checker(input_question):
             print("Sorry, that is not a valid input (positive numbers only)")
             continue
         # Makes it so you don't get a ZeroDivisionError,
-        # if you put in 0 for yearly_holidays(in the other functions)
+        # if you put in 0 for yearly_holidays(will happen in the other functions)
         if user_input >= 1:
             return user_input
         else:
@@ -107,7 +107,7 @@ def user_input_checker(input_question):
             continue
 
 
-def main():
+def main() -> None:
     """main function"""
     gross_yearly_salary = user_input_checker(
         "What is your yearly gross salary?: ")
