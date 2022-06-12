@@ -9,9 +9,9 @@ I have included a comment on each section mentioning if it currently works or no
 """
 
 
-def working_days(holidays):
-    """ calculates when to take holidays """
-    days_of_work = (249 - int(holidays))
+def working_days(holidays: int) -> int:
+    """calculates when to take holidays"""
+    days_of_work = (249 - holidays)
     print(f"""
     Working Days Section
     ===========================
@@ -25,13 +25,7 @@ def working_days(holidays):
     return days_of_work
 
 
-# This is a function to calcuate tax brackets
-# Works but doesnt seem to export the values to global variables
-
-# by adding a docstring with """ TEXT """, when you put your mouse over the function,
-# It shows that text, So it helps people understand what the function does
-# Now this function takes in a gross salary and returns the tax bracket %
-def tax_bracket(gross_salary):
+def tax_bracket(gross_salary: int):
     """calculates tax bracket"""
     if gross_salary <= 77400:
         return 0.10
@@ -48,29 +42,29 @@ def tax_bracket(gross_salary):
     elif gross_salary > 663241:
         return 0.50
 
-    return tax_bracket
-
 
 # ALTERNATE IDEA for tax bracket:
-brackets = {"0.10": 77400,
-            "0.14": 110880,
-            "0.20": 178080,
-            "0.31": 247440,
-            "0.35": 514920,
-            "0.47": 663240}
+brackets = {
+    0.10: 77400,
+    0.14: 110880,
+    0.20: 178080,
+    0.31: 247440,
+    0.35: 514920,
+    0.47: 663240
+}
 
 
-def tax_bracket2(bracket, gross_salary_amount):
+def tax_bracket2(bracket: dict[float, int], gross_salary_amount: int) -> float:
     """calucaltes tax brackets"""
     for key, value in bracket.items():
-        if gross_salary_amount <= value:
-            return key
-
         if gross_salary_amount > 663241:
             return 0.50
 
+        if gross_salary_amount <= value:
+            return key
 
-def calc_net_yearly_salary(gross_salary):
+
+def calc_net_yearly_salary(gross_salary: int):
     """calculats yearly net salary"""
     # add full logic for how tax brackets actually work (i.e each step is taxed at its own rate)
     tax_percent = tax_bracket(gross_salary)
@@ -78,10 +72,8 @@ def calc_net_yearly_salary(gross_salary):
     return net_salary
 
 
-def salary(gross_salary, holidays):
+def salary(gross_salary: int, holidays: int) -> None:
     """ calculates salary earnings """
-    # Works but need to fix the importing of net_yearly_salary which,
-    # is depending on calc_net_yearly_salary()
     net_salary = calc_net_yearly_salary(gross_salary)
     work_days = working_days(holidays)
 
@@ -98,15 +90,30 @@ def salary(gross_salary, holidays):
     """)
 
 
-def main():
+def user_input_checker(input_question: str):
+    """Gets and checks user inputs"""
+    while True:
+        try:
+            user_input = int(input(input_question).strip())
+        except ValueError:
+            print("Sorry, that is not a valid input (positive numbers only)")
+            continue
+        # Makes it so you don't get a ZeroDivisionError,
+        # if you put in 0 for yearly_holidays(will happen in the other functions)
+        if user_input >= 1:
+            return user_input
+        else:
+            print("Sorry, input must be greater than 1")
+            continue
+
+
+def main() -> None:
     """main function"""
-    gross_yearly_salary = int(
-        input("What is your yearly gross salary?: ").strip())
+    gross_yearly_salary = user_input_checker(
+        "What is your yearly gross salary?: ")
 
-    yearly_holidays = int(
-        input("How many holidays do you get a year?: ").strip())
-
-    tax_bracket2(brackets, gross_yearly_salary)
+    yearly_holidays = user_input_checker(
+        "How many holidays do you get a year?: ")
 
     salary(gross_yearly_salary, yearly_holidays)
 
