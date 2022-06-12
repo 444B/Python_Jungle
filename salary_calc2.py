@@ -9,7 +9,7 @@ I have included a comment on each section mentioning if it currently works or no
 """
 
 
-def working_days(holidays: int):
+def working_days(holidays: int) -> int:
     """calculates when to take holidays"""
     days_of_work = (249 - holidays)
     print(f"""
@@ -54,7 +54,7 @@ brackets = {
 }
 
 
-def tax_bracket2(bracket: dict[float, int], gross_salary_amount: int):
+def tax_bracket2(bracket: dict[float, int], gross_salary_amount: int) -> float:
     """calucaltes tax brackets"""
     for key, value in bracket.items():
         if gross_salary_amount > 663241:
@@ -72,7 +72,7 @@ def calc_net_yearly_salary(gross_salary: int):
     return net_salary
 
 
-def salary(gross_salary: int, holidays: int):
+def salary(gross_salary: int, holidays: int) -> None:
     """ calculates salary earnings """
     net_salary = calc_net_yearly_salary(gross_salary)
     work_days = working_days(holidays)
